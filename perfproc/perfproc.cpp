@@ -17,11 +17,11 @@
 
 #include <optional>
 #include <unordered_set>
+#include <locale>
 #include <cstdint>
 #include <cstdlib>
 #include <cstdio>
 #include <cassert>
-#include <clocale>
 
 #include <KernelTraceControl.h>
 
@@ -408,7 +408,7 @@ static std::wstring widen(std::string_view s)
 
 int main(int argc, const char* argv[])
 {
-	setlocale(LC_ALL, ".UTF8");
+	std::locale::global(std::locale(".UTF8"));
 
 	CLI::App app{ "Filter ETW session to a specific process" };
 
